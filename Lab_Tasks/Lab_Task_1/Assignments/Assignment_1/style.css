@@ -1,0 +1,54 @@
+.header {
+    text-align: center;
+}
+
+.social-icons a{
+    color: black;
+}
+
+.Summary h2{
+    color: #1a4d8f; /* Blue color for the heading */
+
+}
+.edu h2 {
+    color: #1a4d8f; /* Blue color for the heading */
+}
+
+.edu-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    max-width: 800px; /* Adjust width as needed */
+}
+
+.degree {
+    font-weight: bold;
+}
+
+.university {
+    font-weight: bold;
+}
+
+.date {
+    font-style: italic;
+}
+
+.Skills h2{
+    color: #1a4d8f; 
+
+}
+
+.Projects h2{
+    color: #1a4d8f; 
+
+}
+
+.Certifications h2{
+    color: #1a4d8f; 
+
+}
+
+.co-curricular h2{
+    color: #1a4d8f; 
+}
