@@ -98,6 +98,8 @@
     padding: 10px 20px;
     font-size: 80px;
     border-radius: 5px;
+    white-space: nowrap;
+
 }
 
 .text-overlay-mini{
@@ -107,7 +109,7 @@
     left: 50%;
     transform: translate(-50%, -50%);
     color: rgb(250, 245, 245);
-    font-size: 60px;
+    font-size: 50px;
     white-space: nowrap;
 }
 
