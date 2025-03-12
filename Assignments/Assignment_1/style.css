@@ -7,11 +7,11 @@
 }
 
 .Summary h2{
-    color: #1a4d8f; /* Blue color for the heading */
+    color: #1a4d8f; 
 
 }
 .edu h2 {
-    color: #1a4d8f; /* Blue color for the heading */
+    color: #1a4d8f; 
 }
 
 .edu-content {
@@ -19,7 +19,7 @@
     justify-content: space-between;
     align-items: center;
     width: 100%;
-    max-width: 800px; /* Adjust width as needed */
+    max-width: 800px; 
 }
 
 .degree {
