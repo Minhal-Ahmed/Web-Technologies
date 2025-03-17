@@ -1,3 +1,10 @@
+* {
+    margin: 0;
+    padding: 0px;
+    box-sizing: border-box;
+    
+}
+
 .headline{
     background-color: rgb(248, 241, 231);
     display: flex;
@@ -7,31 +14,15 @@
     width: 100%;
 }
 
-    
-.nav-bar{
-    position: sticky;
-    padding-left: 20px;
-    padding-right: 20px;
-    top: 0%;
-    background-color: white;
-}
-
-.categories li a{
-    text-decoration: none;
-    color: black;
-
-}
-
-.bar{
+.categories{
     display: flex;
     justify-content: space-between;
     align-items: center;
-    width: 100%;
-    list-style: none;
+    width: 50%;
+    font-size: larger;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     
 }
-
-
 
 .icons-right{
     display: flex;
@@ -40,18 +31,94 @@
     width: 10%;
 }
 
+.nav {
+    background-color: #ffffff;
 
-.categories{
+    
+}
+
+.navbar {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
+    list-style: none;
+    background-color: #fffbfb;
     align-items: center;
-    width: 50%;
-    font-size: larger;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    width: 100%;
+    position: sticky;
+    top: 0%;
+    padding-left: 20px;
+    padding-right: 20px;
+    
+}
+
+.navbar li {
+    position: relative;
+    
+}
+
+.navbar a {
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+    padding: 10px;
+}
+
+.navbar a:hover {
+    border-bottom: 2px solid black;
+}
+
+/* Mega Dropdown */
+.mega-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    width: 900px;  /* Adjust width */
+    background: white;
+    z-index: 1000;
+}
+
+.mega-content {
+    display: flex;
+    margin: auto; /* Center the content */
+    gap: 40px;
+}
+
+.mega-column {
+    flex: 1;
+}
+
+.mega-column h3 {
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+.mega-column a {
+    display: block;
+    padding: 5px 0;
+    color: #444;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.mega-column a:hover {
+    color: black;
+}
+
+/* Image Section */
+.mega-column img {
+    width: 100%;
+    border-radius: 5px;
+}
+
+/* Show Mega Menu on Hover */
+.navbar li:hover .mega-menu {
+    display: block;
 }
 
 
 
+
+/* okay from here*/
 .hero-section{
     width: 100%;
     height: 130vh; 
@@ -64,7 +131,7 @@
     position: absolute;
     padding: 20px 40px; 
     font-size: 18px;
-    top: 140%; 
+    top: 130%; 
     left: 50%;
     transform: translate(-50%, -50%);
     background-color: #f8f6f6;
@@ -162,6 +229,7 @@
 
 .content-banner{
     background-color: #19975d;
+    padding: 50px;
     
 }
 
@@ -300,4 +368,3 @@ ul li a {
     margin-right: 5px;
     margin-top: 10px;
 }
-
