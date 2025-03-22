@@ -1,0 +1,255 @@
+.container-fluid{
+    background-color: rgb(248, 246, 243);
+    width: 100%;
+    
+}
+
+#navbarNav{
+    background-color: rgb(246, 247, 247);
+    padding: 10px;   
+    justify-content: center;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+
+}
+
+.categories{
+    width: 65%;
+    font-size: larger;
+}
+
+
+.carousel-item img {
+    height: 600px; 
+    object-fit: cover; 
+  }
+
+
+.carousel-caption {
+    align-items: center;
+    top: 50%;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+
+}
+
+.carousel-caption .btn {
+    border-radius: 5px;
+
+    position: absolute;
+    padding: 20px 40px; 
+    font-size: 18px;
+    top: 130%; 
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #f8f6f6;
+    color: rgb(19, 18, 18);
+    border: none;
+    font-family: monospace;
+    font-weight: bold;
+    cursor: pointer;
+    z-index: 2px;
+}
+
+.carousel-caption .btn:hover {
+    background-color: #f8fafc; /* Darker shade on hover */
+}
+
+.hero-section{
+    width: 100%;
+    height: 130vh; 
+    overflow: hidden;
+    display: inline-block;
+    
+}
+
+.btn{
+    position: absolute;
+    padding: 20px 40px; 
+    font-size: 18px;
+    top: 130%; 
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #f8f6f6;
+    color: rgb(19, 18, 18);
+    border: none;
+    font-family: monospace;
+    font-weight: bold;
+    cursor: pointer;
+    z-index: 2px;
+                
+}
+
+.btn:hover {
+    color: #696766;
+}
+
+.banner img{
+    width: 100%;
+    
+}
+
+
+.text-overlay {
+    font-weight: 300;
+    font-style: normal;
+    position: absolute;
+    top: 70%;
+    left: 50%;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+    transform: translate(-50%, -50%);
+    color: rgb(250, 245, 245);
+    padding: 10px 20px;
+    font-size: 80px;
+    border-radius: 5px;
+    white-space: nowrap;
+
+}
+
+.text-overlay-mini{
+    font-style: normal;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: rgb(250, 245, 245);
+    font-size: 50px;
+    white-space: nowrap;
+}
+
+.flex{
+    
+    display: flex;
+    width: 100%; 
+    height: 100%;
+    position: relative;
+
+}
+
+.image-1 .btn{
+    position: absolute; 
+    transform: translate(-50%, -50%); 
+    top: 90%;
+    left: 50%;
+}
+
+.image-1{
+    width: 50%;
+    display: block;
+    overflow: hidden;
+
+}
+
+.image-1 img{
+    width: 100%; 
+    height: 100%;
+    object-fit: cover;
+}
+
+.image-2{
+    width: 50%;
+    overflow: hidden;
+}
+   
+.image-2 img{
+    width: 100%; 
+    height: 100%;
+    object-fit: cover;
+}
+.image-2 .btn{
+    position: absolute; 
+    transform: translate(-50%, -50%); 
+    top: 90%;
+    left: 50%;
+}
+
+.green-banner {
+    background-color: #166d3b;
+    color: white;
+    text-align: center;
+    padding: 20px;
+    font-size: 22px;
+    font-style: italic;
+}
+
+/* Filter Buttons */
+.filter-buttons a {
+    text-decoration: none;
+    color: black;
+    padding: 10px;
+    font-weight: bold;
+    border-bottom: 2px solid transparent;
+}
+
+.filter-buttons a:hover,
+.filter-buttons a.active {
+    border-bottom: 2px solid black;
+}
+
+/* Image Grid */
+
+
+.gallery img {
+    width: 100%;
+    height: 300px; /* Set a fixed height */
+    object-fit: cover; /* Ensures images fill the space while maintaining aspect ratio */
+    border-radius: 5px;
+}
+
+.gallery-item {
+    position: relative;
+}
+
+/* Overlay Icons */
+.icon-overlay {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background: rgba(255, 255, 255, 0.8);
+    padding: 5px 10px;
+    border-radius: 20px;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+/* Social Media Icon */
+.social-icon {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    background: white;
+    padding: 8px;
+    border-radius: 50%;
+    font-size: 18px;
+}
+
+
+.footer {
+    background-color: #f8f5f0;
+    padding: 40px 0;
+}
+.footer a {
+    color: black;
+    text-decoration: none;
+}
+.footer a:hover {
+    text-decoration: underline;
+}
+.contact-btn {
+    border: 1px solid black;
+    padding: 10px 15px;
+    display: inline-block;
+    text-align: center;
+}
+.email-input {
+    border: 1px solid black;
+    padding: 10px;
+    width: 100%;
+    max-width: 400px;
+}
+.social-icons a {
+    margin-right: 10px;
+    font-size: 24px;
+}
+.payment-icons img {
+    height: 24px;
+    margin-right: 5px;
+}
