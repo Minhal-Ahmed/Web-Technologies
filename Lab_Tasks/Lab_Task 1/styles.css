@@ -1,0 +1,162 @@
+.container-fluid{
+    background-color: rgb(248, 246, 243);
+    width: 100%;
+    
+}
+
+#navbarNav{
+    background-color: rgb(246, 247, 247);
+    padding: 10px;   
+    justify-content: center;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+
+}
+
+.categories{
+    width: 65%;
+    font-size: larger;
+}
+
+
+.carousel-item img {
+    height: 600px; 
+    object-fit: cover; 
+  }
+
+
+.carousel-caption {
+    align-items: center;
+    top: 50%;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+
+}
+
+.carousel-caption .btn {
+    border-radius: 5px;
+
+    position: absolute;
+    padding: 20px 40px; 
+    font-size: 18px;
+    top: 130%; 
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #f8f6f6;
+    color: rgb(19, 18, 18);
+    border: none;
+    font-family: monospace;
+    font-weight: bold;
+    cursor: pointer;
+    z-index: 2px;
+}
+
+.carousel-caption .btn:hover {
+    background-color: #f8fafc; /* Darker shade on hover */
+}
+
+.hero-section{
+    width: 100%;
+    height: 130vh; 
+    overflow: hidden;
+    display: inline-block;
+    
+}
+
+.btn{
+    position: absolute;
+    padding: 20px 40px; 
+    font-size: 18px;
+    top: 130%; 
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #f8f6f6;
+    color: rgb(19, 18, 18);
+    border: none;
+    font-family: monospace;
+    font-weight: bold;
+    cursor: pointer;
+    z-index: 2px;
+                
+}
+
+.btn:hover {
+    color: #696766;
+}
+
+.banner img{
+    width: 100%;
+    
+}
+
+.text-overlay {
+    font-weight: 300;
+    font-style: normal;
+    position: absolute;
+    top: 70%;
+    left: 50%;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+    transform: translate(-50%, -50%);
+    color: rgb(250, 245, 245);
+    padding: 10px 20px;
+    font-size: 80px;
+    border-radius: 5px;
+    white-space: nowrap;
+
+}
+
+.text-overlay-mini{
+    font-style: normal;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: rgb(250, 245, 245);
+    font-size: 50px;
+    white-space: nowrap;
+}
+
+.flex{
+    
+    display: flex;
+    width: 100%; 
+    height: 100%;
+    position: relative;
+
+}
+
+.image-1 .btn{
+    position: absolute; 
+    transform: translate(-50%, -50%); 
+    top: 90%;
+    left: 50%;
+}
+
+.image-1{
+    width: 50%;
+    display: block;
+    overflow: hidden;
+
+}
+
+.image-1 img{
+    width: 100%; 
+    height: 100%;
+    object-fit: cover;
+}
+
+.image-2{
+    width: 50%;
+    overflow: hidden;
+}
+   
+.image-2 img{
+    width: 100%; 
+    height: 100%;
+    object-fit: cover;
+}
+.image-2 .btn{
+    position: absolute; 
+    transform: translate(-50%, -50%); 
+    top: 90%;
+    left: 50%;
+}
+

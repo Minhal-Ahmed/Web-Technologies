@@ -73,7 +73,7 @@
     position: absolute;
     top: 100%;
     width: 900px;  /* Adjust width */
-    background: white;
+    background: rgb(248, 185, 185);
     z-index: 1000;
 }
 
