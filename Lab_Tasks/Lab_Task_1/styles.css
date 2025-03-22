@@ -1,22 +1,104 @@
 .container-fluid{
-    background-color: rgb(248, 246, 243);
+    background-color: rgb(255, 255, 255);
     width: 100%;
     
 }
 
-#navbarNav{
-    background-color: rgb(246, 247, 247);
-    padding: 10px;   
+#categories{
+    background-color: #ffffff;
     justify-content: center;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    width: 100%;
 
 }
 
-.categories{
-    width: 65%;
-    font-size: larger;
+.dropdown:hover .dropdown-menu {
+    display: flex;
+    width: 100%;
+    left: 0;
+    right: 0;
+    background-color: rgb(253, 249, 249);
+    border: none;
+    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.1);
 }
 
+.dropdown-menu {
+    background-color: white !important;
+    width: 100vw; /* Ensures it spans the full container */
+    border-radius: 5px; /* Optional: makes edges smooth */
+    display: block; /* Ensures visibility */
+}
+
+.row .col-md-3{
+    background-color: #f8f5f0;
+}
+
+
+.mega-menu .row {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: nowrap; /* Prevent text stacking */
+}
+
+
+/* Fix link colors */
+.dropdown-menu a {
+    color: black !important;
+    text-decoration: none;
+    display: block; /* Ensures full-width clicking */
+    padding: 5px 10px;
+}
+
+.dropdown-menu a:hover {
+    background-color: #f8f9fa !important; /* Light gray hover effect */
+    color: black !important;
+}
+
+/* Image fixes */
+.mega-menu img {
+    width: 100%;
+    height: auto;
+    border-radius: 5px;
+}
+
+/* Responsive fix */
+@media (max-width: 768px) {
+    .dropdown-menu {
+        width: 100%;
+        position: static;
+    }
+    .mega-menu {
+        flex-direction: column;
+    }
+}
+
+
+.mega-menu .col-md-3 {
+    flex: 1; /* Make all columns equal */
+    padding: 10px;
+    min-width: 200px;
+}
+
+.container-mega-menu .col-md-3 {
+    background-color: white !important;
+    padding: 10px;
+}
+
+
+/* Fix for large screens */
+@media (min-width: 992px) {
+    .dropdown-menu {
+        max-width: 1200px; /* Adjust the width */
+        margin: auto; /* Center the menu */
+    }
+}
+
+
+.icons-right{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 10%;
+}
 
 .carousel-item img {
     height: 600px; 
@@ -185,8 +267,6 @@
 }
 
 /* Image Grid */
-
-
 .gallery img {
     width: 100%;
     height: 300px; /* Set a fixed height */

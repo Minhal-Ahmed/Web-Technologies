@@ -10,59 +10,77 @@
   </head>
   <body>
 
-  <!--Nav bar-->
-    <nav class="navbar navbar-expand-lg bg-body-tertiary">
-        <div class="container-fluid" >
-          <a class="navbar-brand" href="#"><img src="assets/boden-logo-150-v2.svg" alt="" width="120px"></a>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+
+  
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-white border-bottom">
+    <div class="container-fluid">
+      <img src="assets/boden-logo-150-v2.svg" alt="logo" width="15%">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
             <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarNav">
-            <div class="categories">
-            <ul class="navbar-nav">
-              <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="#">NEW</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">DRESSES</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">WOMEN</a>
-              </li>
-
-              <li class="nav-item">
-                <a class="nav-link" href="#">GIRLS</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">BOYS</a>
-              </li><li class="nav-item">
-                <a class="nav-link" href="#">BABY</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#" style="color: red;">SALE</a>
-              </li>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto" id="categories">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle fw-bold" href="#" id="megaMenu" role="button">
+                        NEW
+                    </a>
+                    <div class="dropdown-menu">
+                        <div class="container mega-menu" id="menu" style="background-color: rgb(252, 253, 253);">
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <h5>WOMEN</h5>
+                                    <a href="#">New In: View All</a>
+                                    <a href="#">Lookbook: Novel Ideas</a>
+                                    <a href="#">Holiday</a>
+                                    <a href="#">Linen</a>
+                                    <a href="#">British Classics</a>
+                                </div>
+                                <div class="col-md-3">
+                                    <h5>TRENDING NOW</h5>
+                                    <a href="#">Linen | Meet The Alexa Dress</a>
+                                    <a href="#">Tops | Meet The Felicity Blouse</a>
+                                    <a href="#">The Spring Edit | Florals</a>
+                                    <a href="#">Outfit Inspiration</a>
+                                    <a href="#">International Women's Day</a>
+                                </div>
+                                <div class="col-md-3">
+                                    <h5>MINI BODEN</h5>
+                                    <a href="#">Splash-worthy Swimwear</a>
+                                    <a href="#">Mini Holiday Shop</a>
+                                    <a href="#">Girls' New In: View All</a>
+                                    <a href="#">Boys' New In: View All</a>
+                                    <a href="#">Baby New In: View All</a>
+                                </div>
+                                <div class="col-md-3" >
+                                    <img src="assets/img1of3.jpg" alt="Occasion">
+                                    <p>Occasion</p>
+                                    <img src="assets/Flex-2.webp" alt="Spring Occasion">
+                                    <p>Mini Spring Occasion</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li class="nav-item"><a class="nav-link" href="#">DRESSES</a></li>
+                <li class="nav-item"><a class="nav-link" href="#">WOMEN</a></li>
+                <li class="nav-item"><a class="nav-link" href="#">GIRLS</a></li>
+                <li class="nav-item"><a class="nav-link" href="#">BOYS</a></li>
+                <li class="nav-item"><a class="nav-link text-danger fw-bold" href="#">SALE</a></li>
             </ul>
         </div>
-          </div>
 
-          
-<!--Icons-->
-          <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav ms-auto">
-              <li class="nav-item">
-                <a class="nav-link" href="#"><i class="fa-solid fa-magnifying-glass"></i></a>  <!-- Home Icon -->
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#"><i class="fas fa-user"></i></a>  <!-- User Icon -->
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#"><i class="fa-solid fa-bag-shopping"></i></a>  <!-- Cart Icon -->
-              </li>
-            </ul>
-          </div>
-        </div>
-      </nav>
-     
+        <div class="icons-right"> 
+          <i class="fa-solid fa-magnifying-glass"></i>
+          <i class="fa-solid fa-user"></i>
+          <i class="fa-solid fa-bag-shopping"></i>
+  
+    </div>
+
+    </div>
+</nav>
+   
+ 
       <!--Carousal-->
       <div id="carouselExampleIndicators" class="carousel slide">
         <div class="carousel-indicators">
@@ -72,7 +90,7 @@
         </div>
         <div class="carousel-inner">
           <div class="carousel-item active">
-            <img src="assets/car3.webp" class="d-block w-100" alt="...">
+            <img src="assets/car1.webp" class="d-block w-100" alt="...">
 
             <div class="carousel-caption">
                 <h1>HOLIDAY PACKING LIST</h1>
@@ -84,7 +102,7 @@
             <img src="assets/car2.webp" class="d-block w-100" alt="...">
           </div>
           <div class="carousel-item">
-            <img src="assets/car1.webp" class="d-block w-100" alt="...">
+            <img src="assets/car3.webp" class="d-block w-100" alt="...">
           </div>
           
         </div>
@@ -243,7 +261,6 @@
                   <a href="#">privacy notice</a> and agree to receive emails.</p>
               <div class="d-flex">
                   <input type="email" class="email-input" placeholder="Email address">
-                  <button class="btn btn-dark ms-2">→</button>
               </div>
 
               <!-- Social Media Icons -->
@@ -278,3 +295,5 @@
       <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     </body>
 </html>
+
+
