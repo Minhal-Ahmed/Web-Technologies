@@ -1,0 +1,115 @@
+<div class="container mt-5">
+  <h2 class="mb-4">🛒 Your Cart</h2>
+  
+  <% if (cart.length === 0) { %>
+    <div class="alert alert-info">Your cart is empty.</div>
+    <a href="/product" class="btn btn-primary mt-3">← Back to Products</a>
+  <% } else { %>
+    <div class="table-responsive">
+      <table class="table table-bordered table-striped">
+        <thead class="table-dark">
+          <tr>
+            <th>Product</th>
+            <th>Price</th>
+            <th>Qty</th>
+            <th>Subtotal</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% cart.forEach(item => { %>
+            <tr>
+              <td>
+                <div class="d-flex align-items-center">
+                  <% if (item.image) { %>
+                    <img src="<%= item.image %>" alt="<%= item.productName %>" 
+                         style="width: 50px; height: 50px; margin-right: 10px; object-fit: cover; border-radius: 4px;">
+                  <% } %>
+                  <span><%= item.productName %></span>
+                </div>
+              </td>
+              <td>£<%= item.price.toFixed(2) %></td>
+              <td>
+                <form action="/update-quantity" method="POST" class="d-inline">
+                  <input type="hidden" name="productId" value="<%= item.productId %>">
+                  <div class="input-group" style="width: 120px;">
+                    <input type="number" name="quantity" value="<%= item.quantity %>" 
+                           min="1" class="form-control form-control-sm text-center">
+                    <button type="submit" class="btn btn-sm btn-outline-secondary">
+                      ↻
+                    </button>
+                  </div>
+                </form>
+              </td>
+              <td><strong>£<%= (item.price * item.quantity).toFixed(2) %></strong></td>
+              <td>
+                <form action="/remove-from-cart" method="POST" class="d-inline">
+                  <input type="hidden" name="productId" value="<%= item.productId %>">
+                  <button type="submit" class="btn btn-sm btn-danger" 
+                          onclick="return confirm('Remove this item from cart?')">
+                    🗑️ Remove
+                  </button>
+                </form>
+              </td>
+            </tr>
+          <% }) %>
+        </tbody>
+      </table>
+    </div>
+    
+    <div class="row mt-4">
+      <div class="col-md-6">
+        <a href="/product" class="btn btn-outline-primary btn-lg">
+          ← Continue Shopping
+        </a>
+      </div>
+      <div class="col-md-6 text-end">
+        <h4 class="mb-3">
+          Total: <span class="badge bg-success fs-5">£<%= total.toFixed(2) %></span>
+        </h4>
+        <a href="/checkout" class="btn btn-success btn-lg">
+          Proceed to Checkout →
+        </a>
+      </div>
+    </div>
+  <% } %>
+</div>
+
+<style>
+/* Custom styles for better cart appearance */
+.table th {
+  background-color: #2c3e50 !important;
+  color: white !important;
+  font-weight: 600;
+  border-color: #34495e !important;
+}
+
+.table td {
+  vertical-align: middle;
+  padding: 15px 12px;
+}
+
+.input-group {
+  max-width: 120px;
+}
+
+.btn-danger {
+  transition: all 0.2s ease;
+}
+
+.btn-danger:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 2px 4px rgba(220, 53, 69, 0.3);
+}
+
+.badge.bg-success {
+  font-size: 1.2em !important;
+  padding: 8px 12px;
+}
+
+.table-responsive {
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+</style>

@@ -1,0 +1,148 @@
+<%
+const products = [
+  { productId: "p1", productName: "Carla Linen Midi Dress", price: 136.00, image: "assets/product1.webp", colors: "5 Colours", label: "SELLING FAST", size: "regular" },
+  { productId: "p2", productName: "Floral Summer Maxi", price: 90.00, image: "assets/product2.webp", colors: "2 Colours", size: "regular" },
+  { productId: "p3", productName: "Pleated Sleeveless Dress", price: 90.00, image: "assets/product3.webp", colors: "2 Colours", size: "regular" },
+  { productId: "p4", productName: "Isabella Cotton Satin Skirt", price: 90.00, image: "assets/product4.webp", colors: "2 Colours", size: "regular" },
+  { productId: "p5", productName: "Crew Neck Dress", price: 136.00, image: "assets/bigproduct1.webp", colors: "5 Colours", label: "SELLING FAST", size: "big" },
+  { productId: "p6", productName: "Silk Blend Top", price: 90.00, image: "assets/bigproduct2.webp", colors: "2 Colours", size: "big" },
+  { productId: "p7", productName: "Pleat Linen Wide Leg Shorts", price: 90.00, image: "assets/product5.webp", colors: "2 Colours", label: "SELLING FAST", size: "regular" },
+  { productId: "p8", productName: "Pleat Linen Wide Leg Shorts", price: 90.00, image: "assets/product6.webp", colors: "2 Colours", size: "regular" },
+  { productId: "p9", productName: "Pleat Linen Wide Leg Shorts", price: 90.00, image: "assets/product7.webp", colors: "2 Colours", size: "regular" },
+  { productId: "p10", productName: "Pleat Linen Wide Leg Shorts", price: 90.00, image: "assets/product8.webp", colors: "2 Colours", size: "regular" },
+  { productId: "p11", productName: "Summer Midi Dress", price: 136.00, image: "assets/bigproduct3.webp", colors: "5 Colours", label: "SELLING FAST", size: "big" },
+  { productId: "p12", productName: "Casual Wide Leg Shorts", price: 90.00, image: "assets/bigproduct4.webp", colors: "2 Colours", size: "big" },
+  { productId: "p13", productName: "Evening Midi Dress", price: 136.00, image: "assets/product9.webp", colors: "5 Colours", label: "SELLING FAST", size: "regular" },
+  { productId: "p14", productName: "Relaxed Linen Shorts", price: 90.00, image: "assets/product10.webp", colors: "2 Colours", size: "regular" },
+  { productId: "p15", productName: "Comfort Linen Shorts", price: 90.00, image: "assets/product11.webp", colors: "2 Colours", size: "regular" },
+  { productId: "p16", productName: "Breathable Linen Shorts", price: 90.00, image: "assets/product12.webp", colors: "2 Colours", size: "regular" },
+  { productId: "p17", productName: "Designer Midi Dress", price: 136.00, image: "assets/bigproduct5.webp", colors: "5 Colours", label: "SELLING FAST", size: "big" },
+  { productId: "p18", productName: "Premium Linen Shorts", price: 90.00, image: "assets/bigproduct6.webp", colors: "2 Colours", size: "big" },
+  { productId: "p19", productName: "Classic Midi Dress", price: 136.00, image: "assets/product13.webp", colors: "5 Colours", label: "SELLING FAST", size: "regular" },
+  { productId: "p20", productName: "Versatile Linen Shorts", price: 90.00, image: "assets/product14.webp", colors: "2 Colours", size: "regular" },
+  { productId: "p21", productName: "Trendy Linen Shorts", price: 90.00, image: "assets/product15.webp", colors: "2 Colours", size: "regular" },
+  { productId: "p22", productName: "Stylish Linen Shorts", price: 90.00, image: "assets/product16.webp", colors: "2 Colours", size: "regular" }
+];
+
+// Group products by their position in the layout
+const regularProducts = products.filter(p => p.size === "regular");
+const bigProducts = products.filter(p => p.size === "big");
+
+// Function to chunk array into groups of 4 for regular products
+function chunkArray(array, chunkSize) {
+  const chunks = [];
+  for (let i = 0; i < array.length; i += chunkSize) {
+    chunks.push(array.slice(i, i + chunkSize));
+  }
+  return chunks;
+}
+
+// Function to chunk array into groups of 2 for big products
+function chunkBigProducts(array, chunkSize) {
+  const chunks = [];
+  for (let i = 0; i < array.length; i += chunkSize) {
+    chunks.push(array.slice(i, i + chunkSize));
+  }
+  return chunks;
+}
+
+const regularProductChunks = chunkArray(regularProducts, 4);
+const bigProductChunks = chunkBigProducts(bigProducts, 2);
+%>
+
+<div class="heading">
+  Women's New In
+</div>
+
+<!-- Banner -->
+<div class="banner">
+  <img src="assets/banner3.webp" alt="Banner" />
+  <div class="banner-text">
+    <h1>THE CIRCUS <em> is in town</em></h1>
+    <p>Roll up, roll up for the greatest show on earth. This event season, <br>
+      we're celebrating new bold occasionwear and circus-inspired styles for 
+      every <br> Summer party. Think drapey silks, diamond patterns, joyful spots 
+      and hand-drawn <br> prints. Just make sure you RSVP.</p>
+  </div>
+</div>
+
+<!-- Filters -->
+<div class="filters">
+  <span><%= products.length %> items</span>
+  <select><option>Size</option></select>
+  <select><option>Category</option></select>
+  <select><option>Style</option></select>
+  <select><option>Colour</option></select>
+  <select><option>Price</option></select>
+  <span style="float: right;">Sort by: Favourites</span>
+</div>
+
+<% 
+let regularIndex = 0;
+let bigIndex = 0;
+
+// Layout pattern: 4 regular products, then 2 big products, repeat
+while (regularIndex < regularProductChunks.length || bigIndex < bigProductChunks.length) {
+  // Display regular products (4 in a row)
+  if (regularIndex < regularProductChunks.length) {
+%>
+<!-- Product Grid -->
+<div class="product-grid1">
+  <% regularProductChunks[regularIndex].forEach(function(product) { %>
+    <div class="product-card">
+      <div class="image-container">
+        <img src="<%= product.image %>" alt="<%= product.productName %>">
+        <form action="/add-to-cart" method="POST" style="display: inline;">
+          <input type="hidden" name="productId" value="<%= product.productId %>">
+          <input type="hidden" name="productName" value="<%= product.productName %>">
+          <input type="hidden" name="price" value="<%= product.price %>">
+          <input type="hidden" name="image" value="<%= product.image %>">
+          <button type="submit" class="add-btn">+</button>
+        </form>
+      </div>
+      <% if (product.label) { %>
+        <p class="label"><%= product.label %></p>
+      <% } %>
+      <p><%= product.productName %></p>
+      <p>£<%= product.price.toFixed(2) %></p>
+      <p><%= product.colors %></p>
+      <p class="discount">15% OFF WITH CODE NB7C</p>
+    </div>
+  <% }); %>
+</div>
+<% 
+    regularIndex++;
+  }
+  
+  // Display big products (2 in a row)
+  if (bigIndex < bigProductChunks.length) {
+%>
+<!--Big grid-->
+<div class="product-grid1">
+  <% bigProductChunks[bigIndex].forEach(function(product) { %>
+    <div class="bigproduct-card">
+      <div class="image-container">
+        <img src="<%= product.image %>" alt="<%= product.productName %>">
+        <form action="/add-to-cart" method="POST" style="display: inline;">
+          <input type="hidden" name="productId" value="<%= product.productId %>">
+          <input type="hidden" name="productName" value="<%= product.productName %>">
+          <input type="hidden" name="price" value="<%= product.price %>">
+          <input type="hidden" name="image" value="<%= product.image %>">
+          <button type="submit" class="add-btn">+</button>
+        </form>
+      </div>
+      <% if (product.label) { %>
+        <p class="label"><%= product.label %></p>
+      <% } %>
+      <p><%= product.productName %></p>
+      <p>£<%= product.price.toFixed(2) %></p>
+      <p><%= product.colors %></p>
+      <p class="discount">15% OFF WITH CODE NB7C</p>
+    </div>
+  <% }); %>
+</div>
+<% 
+    bigIndex++;
+  }
+} 
+%>
