@@ -7,6 +7,7 @@ const Order = require("./models/Order");
 const app = express();
 const checkoutRoutes = require('./routes/api/checkout');
 const cartRoutes = require('./routes/api/cart');
+const methodOverride = require('method-override');
 
 
 // MongoDB Connection
@@ -46,6 +47,10 @@ app.use((req, res, next) => {
   res.locals.cart = req.session.cart || { totalQty: 0 };
   next();
 });
+
+app.use(methodOverride('_method'));
+
+app.use('/admin/vehicles', require('./routes/api/admin/vehicles'));
 
 // Routes
 

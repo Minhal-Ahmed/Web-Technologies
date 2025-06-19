@@ -1,0 +1,105 @@
+<div class="container mt-5">
+  <div class="d-flex justify-content-between align-items-center mb-4">
+    <h2>🚗 Vehicle Management</h2>
+    <a href="/admin/vehicles/add" class="btn btn-success">
+      <i class="fas fa-plus me-2"></i>Add New Vehicle
+    </a>
+  </div>
+
+  <% if (vehicles.length === 0) { %>
+    <div class="alert alert-info text-center">
+      <i class="fas fa-info-circle me-2"></i>No vehicles found.
+    </div>
+  <% } else { %>
+    <div class="table-responsive">
+      <table class="table table-hover align-middle">
+        <thead class="table-dark">
+          <tr>
+            <th style="width: 100px;">Image</th>
+            <th>Name</th>
+            <th>Brand</th>
+            <th style="width: 120px;">Price</th>
+            <th>Type</th>
+            <th style="width: 180px;" class="text-center">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% vehicles.forEach(vehicle => { %>
+            <tr>
+              <td>
+                <% if (vehicle.image) { %>
+                  <img 
+                    src="<%= vehicle.image %>" 
+                    class="img-thumbnail" 
+                    style="width: 80px; height: 50px; object-fit: cover;" 
+                    alt="<%= vehicle.name %>"
+                  >
+                <% } else { %>
+                  <div class="bg-light d-flex align-items-center justify-content-center text-muted" 
+                       style="width: 80px; height: 50px; border-radius: 4px;">
+                    <i class="fas fa-image"></i>
+                  </div>
+                <% } %>
+              </td>
+              <td class="fw-semibold"><%= vehicle.name %></td>
+              <td><%= vehicle.brand %></td>
+              <td class="fw-bold text-success">$<%= vehicle.price.toLocaleString() %></td>
+              <td>
+                <span class="badge bg-secondary"><%= vehicle.type %></span>
+              </td>
+              <td>
+                <div class="btn-group" role="group">
+                  <a 
+                    href="/admin/vehicles/edit/<%= vehicle._id %>" 
+                    class="btn btn-outline-warning btn-sm"
+                    title="Edit Vehicle"
+                  >
+                    <i class="fas fa-edit"></i>
+                  </a>
+                  <a 
+                    href="/admin/vehicles/delete/<%= vehicle._id %>" 
+                    class="btn btn-outline-danger btn-sm"
+                    title="Delete Vehicle"
+                  >
+                    <i class="fas fa-trash"></i>
+                  </a>
+                </div>
+              </td>
+            </tr>
+          <% }); %>
+        </tbody>
+      </table>
+    </div>
+  <% } %>
+</div>
+
+<!-- Delete confirmation modal -->
+<div class="modal fade" id="deleteModal" tabindex="-1">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Confirm Delete</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body">
+        <p>Are you sure you want to delete <strong id="vehicleName"></strong>?</p>
+        <p class="text-muted">This action cannot be undone.</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+        <form id="deleteForm" method="POST" style="display: inline;">
+          <input type="hidden" name="_method" value="DELETE">
+          <button type="submit" class="btn btn-danger">Delete Vehicle</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+function deleteVehicle(vehicleId, vehicleName) {
+  document.getElementById('vehicleName').textContent = vehicleName;
+  document.getElementById('deleteForm').action = `/admin/vehicles/${vehicleId}?_method=DELETE`;
+  new bootstrap.Modal(document.getElementById('deleteModal')).show();
+}
+</script>

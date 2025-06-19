@@ -5,7 +5,13 @@ const multer = require('multer');
 const path = require('path');
 const fs = require('fs');
 const Vehicle = require('../../../models/Vehicle');
-const isAdmin=require('../')
+
+function isAdmin(req, res, next) {
+  if (!req.session.user || !req.session.user.isAdmin) {
+    return res.status(403).send("Admins only");
+  }
+  next();
+}
 
 // Configure multer for image upload
 const storage = multer.diskStorage({
@@ -180,6 +186,117 @@ router.get('/edit/:id', isAdmin, async (req, res) => {
     }
 });
 
+// GET route to show delete confirmation page
+router.get('/delete/:id', async (req, res) => {
+  try {
+    const vehicle = await Vehicle.findById(req.params.id);
+    if (!vehicle) {
+      req.flash('error', 'Vehicle not found');
+      return res.redirect('/admin/vehicles');
+    }
+    res.render('admin/vehicles/delete', { vehicle });
+  } catch (error) {
+    console.error('Error fetching vehicle for deletion:', error);
+    req.flash('error', 'Failed to load vehicle');
+    res.redirect('/admin/vehicles');
+  }
+});
+
+// DELETE route to actually delete the vehicle
+router.delete('/:id', async (req, res) => {
+  try {
+    const vehicle = await Vehicle.findById(req.params.id);
+    
+    if (!vehicle) {
+      req.flash('error', 'Vehicle not found');
+      return res.redirect('/admin/vehicles');
+    }
+
+    // Delete associated image file if it exists
+    if (vehicle.image && vehicle.image.startsWith('/uploads/')) {
+      const fs = require('fs');
+      const path = require('path');
+      const imagePath = path.join(__dirname, '../../../public', vehicle.image);
+      
+      // Check if file exists and delete it
+      if (fs.existsSync(imagePath)) {
+        try {
+          fs.unlinkSync(imagePath);
+          console.log(`Deleted image file: ${imagePath}`);
+        } catch (fileError) {
+          console.error('Error deleting image file:', fileError);
+          // Continue with database deletion even if file deletion fails
+        }
+      }
+    }
+
+    // Delete the vehicle from database
+    await Vehicle.findByIdAndDelete(req.params.id);
+    
+    req.flash('success', `Vehicle "${vehicle.name}" has been deleted successfully`);
+    res.redirect('/admin/vehicles');
+
+  } catch (error) {
+    console.error('Error deleting vehicle:', error);
+    req.flash('error', 'Failed to delete vehicle. Please try again.');
+    res.redirect('/admin/vehicles');
+  }
+});
+
+// Alternative: Direct delete route (if you want to skip confirmation page)
+router.post('/quick-delete/:id', async (req, res) => {
+  try {
+    const vehicle = await Vehicle.findById(req.params.id);
+    
+    if (!vehicle) {
+      return res.status(404).json({ 
+        success: false, 
+        message: 'Vehicle not found' 
+      });
+    }
+
+    // Delete image file
+    if (vehicle.image && vehicle.image.startsWith('/uploads/')) {
+      const fs = require('fs');
+      const path = require('path');
+      const imagePath = path.join(__dirname, '../../../public', vehicle.image);
+      
+      if (fs.existsSync(imagePath)) {
+        fs.unlinkSync(imagePath);
+      }
+    }
+
+    // Delete from database
+    await Vehicle.findByIdAndDelete(req.params.id);
+    
+    res.json({ 
+      success: true, 
+      message: `Vehicle "${vehicle.name}" deleted successfully` 
+    });
+
+  } catch (error) {
+    console.error('Error in quick delete:', error);
+    res.status(500).json({ 
+      success: false, 
+      message: 'Failed to delete vehicle' 
+    });
+  }
+});
+// GET route to show edit form
+router.get('/edit/:id', async (req, res) => {
+  try {
+    const vehicle = await Vehicle.findById(req.params.id);
+    if (!vehicle) {
+      req.flash('error', 'Vehicle not found');
+      return res.redirect('/admin/vehicles');
+    }
+    res.render('admin/vehicles/edit', { vehicle });
+  } catch (error) {
+    console.error('Error fetching vehicle:', error);
+    req.flash('error', 'Failed to load vehicle');
+    res.redirect('/admin/vehicles');
+  }
+});
 // POST /admin/vehicles/edit/:id - Update vehicle
 router.post('/edit/:id', isAdmin, upload.single('image'), async (req, res) => {
     try {
