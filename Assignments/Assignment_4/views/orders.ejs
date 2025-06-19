@@ -1,0 +1,16 @@
+<h2>My Orders</h2>
+
+<% if (orders.length > 0) { %>
+  <ul>
+    <% orders.forEach(order => { %>
+      <li>
+        Items: <%= order.items.join(", ") %> <br>
+        Total: $<%= order.total %>
+      </li>
+    <% }) %>
+  </ul>
+<% } else { %>
+  <p>You have no orders yet.</p>
+<% } %>
+
+<a href="/logout">Logout</a>

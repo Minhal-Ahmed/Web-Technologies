@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><%= title %></title>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: linear-gradient(135deg, #0e8f68 0%, #04523e 100%);
+      min-height: 100vh;
+      padding: 2rem;
+    }
+
+    .container {
+      max-width: 1400px;
+      margin: 0 auto;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(20px);
+      border-radius: 20px;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+      animation: slideIn 0.6s ease-out;
+    }
+
+    @keyframes slideIn {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .header {
+      background: linear-gradient(135deg, #119c72 0%, #09643e 100%);
+      padding: 2rem;
+      color: white;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .header::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      right: -50%;
+      width: 100%;
+      height: 200%;
+      background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+      animation: float 6s ease-in-out infinite;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0px) rotate(0deg); }
+      50% { transform: translateY(-20px) rotate(5deg); }
+    }
+
+    .header-content {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .header h1 {
+      font-size: 2.5rem;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .header h1 i {
+      color: #ffd700;
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.7; }
+    }
+
+    .add-btn {
+      background: linear-gradient(45deg, #ff6b6b, #ee5a24);
+      color: white;
+      padding: 12px 24px;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: all 0.3s ease;
+      box-shadow: 0 8px 25px rgba(255, 107, 107, 0.3);
+    }
+
+    .add-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 35px rgba(255, 107, 107, 0.4);
+      background: linear-gradient(45deg, #ee5a24, #ff6b6b);
+    }
+
+    .content {
+      padding: 2rem;
+    }
+
+    .table-container {
+      overflow-x: auto;
+      border-radius: 15px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+      background: white;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.95rem;
+    }
+
+    thead {
+      background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    }
+
+    th {
+      padding: 1.5rem 1rem;
+      text-align: left;
+      font-weight: 700;
+      color: #067441;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      font-size: 0.85rem;
+      border-bottom: 2px solid #dee2e6;
+    }
+
+    tbody tr {
+      transition: all 0.3s ease;
+      border-bottom: 1px solid #f1f3f4;
+    }
+
+    tbody tr:hover {
+      background: linear-gradient(135deg, #f8f9ff 0%, #e3f2fd 100%);
+      transform: scale(1.01);
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+    }
+
+    td {
+      padding: 1.5rem 1rem;
+      vertical-align: middle;
+    }
+
+    .product-image {
+      width: 80px;
+      height: 80px;
+      border-radius: 12px;
+      object-fit: cover;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+      transition: transform 0.3s ease;
+    }
+
+    .product-image:hover {
+      transform: scale(1.1);
+    }
+
+    .no-image {
+      width: 80px;
+      height: 80px;
+      background: linear-gradient(135deg, #ddd 0%, #bbb 100%);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #666;
+      font-size: 0.8rem;
+      font-weight: 500;
+    }
+
+    .product-name {
+      font-weight: 600;
+      color: #0b5f35;
+      font-size: 1.1rem;
+    }
+
+    .product-price {
+      font-weight: 700;
+      color: #27ae60;
+      font-size: 1.1rem;
+    }
+
+    .product-description {
+      color: #7f8c8d;
+      max-width: 200px;
+      line-height: 1.4;
+    }
+
+    .actions {
+      display: flex;
+      gap: 0.5rem;
+      align-items: center;
+    }
+
+    .edit-btn {
+      background: linear-gradient(45deg, #3498db, #2980b9);
+      color: white;
+      padding: 8px 12px;
+      border-radius: 8px;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 12px rgba(7, 141, 107, 0.3);
+    }
+
+    .edit-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 18px rgba(52, 152, 219, 0.4);
+    }
+
+    .delete-form {
+      display: inline;
+    }
+
+    .delete-btn {
+      background: linear-gradient(45deg, #e74c3c, #c0392b);
+      color: white;
+      border: none;
+      padding: 8px 12px;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 12px rgba(231, 76, 60, 0.3);
+    }
+
+    .delete-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 18px rgba(231, 76, 60, 0.4);
+    }
+
+    .empty-state {
+      text-align: center;
+      padding: 4rem 2rem;
+      color: #7f8c8d;
+    }
+
+    .empty-state i {
+      font-size: 4rem;
+      margin-bottom: 1rem;
+      color: #bdc3c7;
+    }
+
+    .empty-state h3 {
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+      color: #2c3e50;
+    }
+
+    @media (max-width: 768px) {
+      .header h1 {
+        font-size: 2rem;
+      }
+      
+      .header-content {
+        flex-direction: column;
+        text-align: center;
+      }
+      
+      table {
+        font-size: 0.85rem;
+      }
+      
+      th, td {
+        padding: 1rem 0.5rem;
+      }
+      
+      .product-image, .no-image {
+        width: 60px;
+        height: 60px;
+      }
+    }
+
+    /* Loading animation for table */
+    .table-container {
+      position: relative;
+    }
+
+    .table-container::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+      animation: shimmer 2s infinite;
+      z-index: 1;
+    }
+
+    @keyframes shimmer {
+      0% { left: -100%; }
+      100% { left: 100%; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <div class="header-content">
+        <h1>
+          <i class="fas fa-cogs"></i>
+          Product Management
+        </h1>
+      <a href="/admin/products/add" style="color: white;">Add Product</a>
+         
+      </div>
+    </div>
+
+    <div class="content">
+      <% if (products && products.length > 0) { %>
+        <div class="table-container">
+          <table>
+            <thead>
+              <tr>
+                <th><i class="fas fa-image"></i> Image</th>
+                <th><i class="fas fa-tag"></i> Product Name</th>
+                <th><i class="fas fa-euro-sign"></i> Price</th>
+                <th><i class="fas fa-info-circle"></i> Description</th>
+                <th><i class="fas fa-tools"></i> Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% products.forEach(product => { %>
+                <tr>
+                  <td>
+                    <% if (product.image) { %>
+                      <img src="/<%= product.image %>" alt="<%= product.productName %>" class="product-image">
+                    <% } else { %>
+                      <div class="no-image">
+                        <i class="fas fa-image"></i>
+                      </div>
+                    <% } %>
+                  </td>
+                  <td class="product-name"><%= product.productName %></td>
+                  <td class="product-price">£ <%= product.price %></td>
+                  <td class="product-description"><%= product.label %> - <%= product.colors %></td>
+                  <td>
+                    <div class="actions">
+                      <a href="/admin/products/edit/<%= product._id %>" class="edit-btn" title="Edit Product">
+                        <i class="fas fa-edit"></i>
+                      </a>
+                      <form action="/admin/products/delete/<%= product._id %>" method="POST" class="delete-form">
+                        <button type="submit" class="delete-btn" onclick="return confirm('Are you sure you want to delete this product?')" title="Delete Product">
+                          <i class="fas fa-trash"></i>
+                        </button>
+                      </form>
+                    </div>
+                  </td>
+                </tr>
+              <% }) %>
+            </tbody>
+          </table>
+        </div>
+      <% } else { %>
+        <div class="empty-state">
+          <i class="fas fa-box-open"></i>
+          <h3>No Products Found</h3>
+          <p>Start by adding your first product to get started.</p>
+        </div>
+      <% } %>
+    </div>
+  </div>
+
+  <script>
+    // Add smooth scrolling and enhanced interactions
+    document.addEventListener('DOMContentLoaded', function() {
+      // Add loading states for delete actions
+      const deleteButtons = document.querySelectorAll('.delete-btn');
+      deleteButtons.forEach(button => {
+        button.addEventListener('click', function(e) {
+          if (confirm('Are you sure you want to delete this product?')) {
+            button.innerHTML = '<i class="fas fa-spinner fa-spin"></i>';
+            button.disabled = true;
+          } else {
+            e.preventDefault();
+          }
+        });
+      });
+
+      // Add hover effects to table rows
+      const tableRows = document.querySelectorAll('tbody tr');
+      tableRows.forEach(row => {
+        row.addEventListener('mouseenter', function() {
+          this.style.transform = 'scale(1.01)';
+        });
+        
+        row.addEventListener('mouseleave', function() {
+          this.style.transform = 'scale(1)';
+        });
+      });
+
+      // Add click to zoom functionality for images
+      const productImages = document.querySelectorAll('.product-image');
+      productImages.forEach(img => {
+        img.addEventListener('click', function() {
+          const modal = document.createElement('div');
+          modal.style.cssText = `
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.8);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            cursor: pointer;
+          `;
+          
+          const modalImg = document.createElement('img');
+          modalImg.src = this.src;
+          modalImg.style.cssText = `
+            max-width: 90%;
+            max-height: 90%;
+            border-radius: 15px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+          `;
+          
+          modal.appendChild(modalImg);
+          document.body.appendChild(modal);
+          
+          modal.addEventListener('click', function() {
+            document.body.removeChild(modal);
+          });
+        });
+      });
+    });
+  </script>
+</body>
+</html>
