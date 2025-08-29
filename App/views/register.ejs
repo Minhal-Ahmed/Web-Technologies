@@ -1,0 +1,151 @@
+<style>
+  .login-form-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 80vh;
+  padding: 2rem 1rem;
+}
+
+.login-card {
+  background: white;
+  padding: 3rem 2.5rem;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 400px;
+  border: 1px solid #f0f0f0;
+  position: relative;
+  overflow: hidden;
+  animation: slideInUp 0.6s ease-out;
+}
+
+.login-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, #19975d, #28a745);
+}
+
+.login-title {
+  text-align: center;
+  margin-bottom: 2rem;
+  color: #333;
+  font-size: 2rem;
+  font-weight: 600;
+  position: relative;
+}
+
+.login-title::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 50px;
+  height: 3px;
+  background: #19975d;
+  border-radius: 2px;
+}
+
+.input-wrapper {
+  position: relative;
+  margin-bottom: 1.5rem;
+}
+
+.login-input {
+  width: 100%;
+  padding: 1rem 1.2rem;
+  font-size: 1rem;
+  border: 2px solid #e8e8e8;
+  border-radius: 12px;
+  background: #fafafa;
+  transition: all 0.3s ease;
+  outline: none;
+  font-family: inherit;
+}
+
+.login-input:focus {
+  border-color: #19975d;
+  background: white;
+  box-shadow: 0 0 0 3px rgba(25, 151, 93, 0.1);
+  transform: translateY(-1px);
+}
+
+.login-submit-btn {
+  width: 100%;
+  padding: 1rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: white;
+  background: #19975d;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  box-shadow: 0 4px 15px rgba(25, 151, 93, 0.3);
+}
+
+.login-submit-btn:hover {
+  background: #157a4a;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(25, 151, 93, 0.4);
+}
+
+.register-link {
+  text-align: center;
+  margin-top: 1.5rem;
+  font-size: 0.95rem;
+  color: #555;
+}
+
+.register-link a {
+  color: #19975d;
+  font-weight: 600;
+  text-decoration: none;
+  margin-left: 5px;
+  transition: color 0.3s ease;
+}
+
+.register-link a:hover {
+  color: #157a4a;
+  text-decoration: underline;
+}
+
+@keyframes slideInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+</style>
+
+<div class="login-form-container">
+  <form action="/register" method="POST" class="login-card">
+    <h2 class="login-title">Register</h2>
+
+    <div class="input-wrapper">
+      <input type="email" name="email" placeholder="Email" required class="login-input">
+    </div>
+
+    <div class="input-wrapper">
+      <input type="password" name="password" placeholder="Password" required class="login-input">
+    </div>
+
+    <button type="submit" class="login-submit-btn">Register</button>
+
+    <div class="register-link">
+      Already have an account? <a href="/login">Login</a>
+    </div>
+  </form>
+</div>
